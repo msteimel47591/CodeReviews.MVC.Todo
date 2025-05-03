@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>To-Do Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/site.js"></script>
+</head>
+
+<body onload="getToDoItems()">
+    <!-- Header -->
+    <div class="bg-primary text-white text-center py-3">
+        <h1>To-Do Manager</h1>
+    </div>
+
+    <!-- To-Do List and Buttons -->
+    <div class="container mt-4">
+        <h2>Your To-Do List</h2>
+        <p class="lead">Click on item to manage</p>
+        <div id="empty-placeholder" class="text-center my-4" style="display: none;">
+            <p class="text-muted">No items found. Start by adding a new to-do item!</p>
+        </div>
+        <div class="list-group" id="todo-list" style="display: none;">
+            <!-- To-Do items will be dynamically added here -->
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-between mt-4">
+            <button type="button" id="refreshBtn" class="btn btn-primary btn-lg flex-fill me-2" style="display: none;" onclick="getToDoItems()">Refresh</button>
+            <button type="button" id="addBtn" class="btn btn-primary btn-lg flex-fill me-2" style="display: none;" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
+            <button type="button" id="updateBtn" class="btn btn-primary btn-lg flex-fill me-2" style="display: none;" onclick="checkSelectionBeforeUpdate()">Update</button>
+            <button type="button" id="deleteBtn" class="btn btn-primary btn-lg flex-fill" style="display: none;" onclick="checkSelectionBeforeDelete()">Delete</button>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add To-Do</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="todoInput" class="form-label txt-white">Item</label>
+                        <input id="todoInput" type="text" class="form-control" placeholder="To-do Item" aria-label="To-do Item" aria-describedby="add-addon">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                        <label class="form-check-label txt-white" for="checkDefault">Completed</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn modal-btn" data-bs-dismiss="modal" onclick="clearInput()">Close</button>
+                    <button type="button" class="btn modal-btn" onclick="validateAndSave('add')">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update To-Do</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="updateInput" class="form-label txt-white">Item</label>
+                        <input id="updateInput" type="text" class="form-control" placeholder="To-do Item" aria-label="To-do Item" aria-describedby="add-addon">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="updateCheckbox">
+                        <label class="form-check-label txt-white" for="checkDefault">Completed</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn modal-btn" data-bs-dismiss="modal" onclick="clearInput()">Close</button>
+                    <button type="button" class="btn modal-btn" onclick="validateAndSave('update')" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Item is not updated until the save button is clicked">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to delete this item?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="deleteInput" class="form-label txt-white">Item</label>
+                        <input id="deleteInput" type="text" class="form-control" placeholder="To-do Item" aria-label="To-do Item" aria-describedby="add-addon" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn modal-btn" data-bs-dismiss="modal" onclick="clearInput()">Cancel</button>
+                    <button type="button" class="btn modal-btn" onclick="DeleteTodoItem()">Delete item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

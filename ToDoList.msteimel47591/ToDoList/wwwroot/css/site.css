@@ -1,0 +1,81 @@
+﻿
+body {
+    background-color: lightsteelblue !important;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-primary {
+    background-color: steelblue !important;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+.list-group-item.active {
+    background-color: steelblue !important; /* Override background color */
+    border-color: steelblue !important; /* Override border color */
+    color: white !important; /* Ensure text color is readable */
+}
+
+.btn.btn-primary {
+    background-color: steelblue !important; /* Override background color */
+    border-color: steelblue !important; /* Override border color */
+    color: white !important; /* Ensure text color is readable */
+}
+
+.btn.btn-primary:active {
+    border-color: lightsteelblue !important;
+    color: white !important;
+}
+
+
+.lead {
+    color: white !important; /* Ensure text color is readable */
+}
+
+.modal-header {
+    background-color: steelblue !important; /* Override background color */
+    color: white !important; /* Ensure text color is readable */
+}
+
+.modal-footer {
+    background-color: steelblue !important; /* Override background color */
+}
+
+.modal-body {
+    background-color: lightsteelblue !important; /* Override background color */
+}
+
+.modal-btn {
+    background-color: lightsteelblue;
+    border-color: lightsteelblue;
+    color: white;
+}
+
+    .modal-btn:hover {
+        background-color: rgb(136, 156, 182);
+        border-color: rgb(136, 156, 182);
+        color: white;
+    }
+
+
+.txt-white {
+    color: white;
+}
+
+.form-check-input:checked {
+    background-color: steelblue; /* Set your desired color */
+    border-color: steelblue; /* Match the border color */
+}
+
+.text-muted {
+    color: white !important; /* Muted text color */
+    font-size: 1.2rem;
+}
+
+
+   
+
